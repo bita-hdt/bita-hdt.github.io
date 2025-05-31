@@ -1,61 +1,62 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { useMobile } from "@/hooks/use-mobile"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { useMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "Introduction", href: "#introduction" },
-  { name: "Experience", href: "#experience" },
+  { name: "About", href: "#about" },
+  { name: "Experiences", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
   { name: "Education", href: "#education" },
-]
+];
 
 export default function Navigation() {
-  const [activeSection, setActiveSection] = useState("introduction")
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const isMobile = useMobile()
+  const [activeSection, setActiveSection] = useState("about");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useMobile();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.name.toLowerCase())
+      const sections = navItems.map((item) => item.name.toLowerCase());
 
       const currentSection = sections.find((section) => {
-        const element = document.getElementById(section)
-        if (!element) return false
+        const element = document.getElementById(section);
+        if (!element) return false;
 
-        const rect = element.getBoundingClientRect()
-        return rect.top <= 100 && rect.bottom >= 100
-      })
+        const rect = element.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom >= 100;
+      });
 
       if (currentSection) {
-        setActiveSection(currentSection)
+        setActiveSection(currentSection);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (href: string) => {
-    setMobileMenuOpen(false)
-    const element = document.querySelector(href)
+    setMobileMenuOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      const headerHeight = 80 // Approximate header height
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - headerHeight
+      const headerHeight = 80; // Approximate header height
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
 
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
-      })
+      });
     }
-  }
+  };
 
   return (
     <>
@@ -70,7 +71,8 @@ export default function Navigation() {
                     variant="ghost"
                     className={cn(
                       "relative rounded-full text-sm",
-                      activeSection === item.name.toLowerCase() && "text-primary font-medium",
+                      activeSection === item.name.toLowerCase() &&
+                        "text-primary font-medium"
                     )}
                     onClick={() => scrollToSection(item.href)}
                   >
@@ -105,7 +107,11 @@ export default function Navigation() {
             aria-label="Toggle menu"
             className="rounded-full"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
 
           <div className="flex items-center">
@@ -130,7 +136,8 @@ export default function Navigation() {
                         variant="ghost"
                         className={cn(
                           "w-full justify-start",
-                          activeSection === item.name.toLowerCase() && "bg-muted font-medium",
+                          activeSection === item.name.toLowerCase() &&
+                            "bg-muted font-medium"
                         )}
                         onClick={() => scrollToSection(item.href)}
                       >
@@ -145,5 +152,5 @@ export default function Navigation() {
         </AnimatePresence>
       </div>
     </>
-  )
+  );
 }

@@ -1,19 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { TypeAnimation } from "react-type-animation"
-import { Button } from "@/components/ui/button"
-import { Mail, Linkedin, Download } from "lucide-react"
+import { motion } from "framer-motion";
+import { Linkedin, Mail } from "lucide-react";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Introduction() {
   const handleDownloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/bita-hedayat-resume.pdf"
-    link.download = "Bita-Hedayat-Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement("a");
+    link.href = "/bita-hedayat-resume.pdf";
+    link.download = "Bita-Hedayat-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-[80vh] flex flex-col justify-center">
@@ -24,17 +23,28 @@ export default function Introduction() {
         className="space-y-6"
       >
         <div className="space-y-2">
-          <h2 className="text-xl font-medium text-muted-foreground">Hello, I'm</h2>
+          <h2 className="text-xl font-medium text-muted-foreground">
+            Hello, I'm
+          </h2>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-transparent">
               Bita Hedayat
             </span>
           </h1>
           <div className="h-16 md:h-20 flex flex-col justify-center">
-            <div className="text-2xl md:text-4xl font-bold mb-2">Front-End Developer</div>
+            <div className="text-2xl md:text-4xl font-bold mb-2">
+              Front-End Developer
+            </div>
             <div className="text-2xl md:text-4xl font-bold text-primary">
               <TypeAnimation
-                sequence={["React.js", 1000, "Next.js", 1000, "React Native", 1000]}
+                sequence={[
+                  "React.js",
+                  1000,
+                  "Next.js",
+                  1000,
+                  "React Native",
+                  1000,
+                ]}
                 wrapper="span"
                 cursor={true}
                 repeat={Number.POSITIVE_INFINITY}
@@ -44,9 +54,11 @@ export default function Introduction() {
         </div>
 
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-          Enthusiastic Frontend Developer with 6 years of hands-on experience in React.js, Next.js, and React Native.
-          Passionate about building innovative, user-friendly, and visually compelling applications. I have successfully
-          developed websites, dashboards, and mobile apps, constantly seeking new challenges and adapting to emerging
+          Enthusiastic Frontend Developer with 6 years of hands-on experience in
+          React.js, Next.js, and React Native. Passionate about building
+          innovative, user-friendly, and visually compelling applications. I
+          have successfully developed websites, dashboards, and mobile apps,
+          constantly seeking new challenges and adapting to emerging
           technologies.
         </p>
 
@@ -75,14 +87,14 @@ export default function Introduction() {
             </a>
           </div>
 
-          <div className="pt-2">
+          {/* <div className="pt-2">
             <Button onClick={handleDownloadResume} className="group">
               <Download className="mr-2 h-4 w-4" />
               Download Resume
             </Button>
-          </div>
+          </div> */}
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-import Introduction from "@/components/introduction"
-import Experience from "@/components/experience"
-import Projects from "@/components/projects"
-import Skills from "@/components/skills"
-import Education from "@/components/education"
-import Footer from "@/components/footer"
-import Navigation from "@/components/navigation"
-import ScrollIndicator from "@/components/scroll-indicator"
-import ScrollToTop from "@/components/scroll-to-top"
+import Education from "@/components/education";
+import Experience from "@/components/experience";
+import Footer from "@/components/footer";
+import Introduction from "@/components/introduction";
+import Navigation from "@/components/navigation";
+import Projects from "@/components/projects";
+import ScrollIndicator from "@/components/scroll-indicator";
+import ScrollToTop from "@/components/scroll-to-top";
+import Skills from "@/components/skills";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
         <Navigation />
 
         <main className="max-w-4xl mx-auto space-y-24 py-12">
-          <section id="introduction" className="scroll-mt-24">
+          <section id="about" className="scroll-mt-24">
             <Introduction />
           </section>
 
@@ -42,5 +42,5 @@ export default function Home() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }

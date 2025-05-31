@@ -1,5 +1,3 @@
-import { Mail, MapPin } from "lucide-react"
-
 export default function Footer() {
   return (
     <footer className="py-8 mt-24">
@@ -8,30 +6,22 @@ export default function Footer() {
           <div className="space-y-3">
             <h3 className="text-xl font-semibold">Let's Work Together</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              I'm always interested in new opportunities and exciting projects. Feel free to reach out if you'd like to
-              collaborate on innovative frontend solutions!
+              I'm always interested in new opportunities and exciting projects.
+              Feel free to reach out if you'd like to collaborate on innovative
+              frontend solutions!
             </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm">
-            <div className="flex items-center gap-2 hover:text-primary transition-colors">
-              <Mail className="h-4 w-4" />
-              <span>bita.hdt@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-2 hover:text-primary transition-colors">
-              <MapPin className="h-4 w-4" />
-              <span>Tehran, Iran</span>
-            </div>
           </div>
 
           <div className="pt-6">
             <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-4"></div>
             <div className="flex flex-col md:flex-row items-center justify-center gap-1 text-sm text-muted-foreground">
-              <span>© {new Date().getFullYear()} Bita Hedayat. All rights reserved.</span>
+              <span>
+                © {new Date().getFullYear()} Bita Hedayat. All rights reserved.
+              </span>
             </div>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
