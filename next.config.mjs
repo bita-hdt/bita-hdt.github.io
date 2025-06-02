@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -9,6 +13,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+  assetPrefix: isProd ? "/bita-hdt.github.io" : "",
+  basePath: isProd ? "/bita-hdt.github.io" : "",
+};
 
-export default nextConfig
+export default nextConfig;
