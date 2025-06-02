@@ -13,7 +13,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: isProd ? "/bita-hdt.github.io" : "",
+  assetPrefix: isProd ? "/bita-hdt.github.io/" : "",
   basePath: isProd ? "/bita-hdt.github.io" : "",
 };
 
