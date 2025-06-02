@@ -4,21 +4,20 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { useMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { Briefcase, Code2, Folder, GraduationCap, User } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Experiences", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
+  { name: "About", href: "#about", icon: User },
+  { name: "Skills", href: "#skills", icon: Code2 },
+  { name: "Experiences", href: "#experiences", icon: Briefcase },
+  { name: "Projects", href: "#projects", icon: Folder },
+  { name: "Education", href: "#education", icon: GraduationCap },
 ];
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState("about");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useMobile();
 
   useEffect(() => {
@@ -43,10 +42,9 @@ export default function Navigation() {
   }, []);
 
   const scrollToSection = (href: string) => {
-    setMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      const headerHeight = 80; // Approximate header height
+      const headerHeight = 80;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight;
@@ -72,7 +70,7 @@ export default function Navigation() {
                     className={cn(
                       "relative rounded-full text-sm",
                       activeSection === item.name.toLowerCase() &&
-                        "text-primary font-medium"
+                        "font-medium bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-transparent"
                     )}
                     onClick={() => scrollToSection(item.href)}
                   >
@@ -89,67 +87,41 @@ export default function Navigation() {
               ))}
             </ul>
           </nav>
-
-          {/* Theme toggle positioned absolutely to the right */}
           <div className="absolute right-0">
             <ThemeToggle />
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation with Icons */}
       <div className="md:hidden sticky top-0 z-40 py-3 px-2 bg-background/80 backdrop-blur-sm">
         <div className="flex justify-between items-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-            className="rounded-full"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
+          <nav className="w-full">
+            <ul className="flex justify-around">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <li key={item.name}>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => scrollToSection(item.href)}
+                      className={cn(
+                        "rounded-full",
+                        activeSection === item.name.toLowerCase() && "bg-muted"
+                      )}
+                      aria-label={item.name}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </Button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-          <div className="flex items-center">
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
         </div>
-
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <nav className="py-4">
-                <ul className="space-y-2">
-                  {navItems.map((item) => (
-                    <li key={item.name}>
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "w-full justify-start",
-                          activeSection === item.name.toLowerCase() &&
-                            "bg-muted font-medium"
-                        )}
-                        onClick={() => scrollToSection(item.href)}
-                      >
-                        {item.name}
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </>
   );

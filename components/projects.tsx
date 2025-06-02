@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { Calendar } from "lucide-react";
 
 interface Project {
   title: string;
@@ -56,7 +57,7 @@ export default function Projects() {
         <p className="text-muted-foreground">Featured projects I've built</p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project, index) => (
           <motion.div
             key={index}
@@ -66,13 +67,14 @@ export default function Projects() {
             viewport={{ once: true }}
           >
             <Card className="overflow-hidden h-full">
-              <CardContent className="p-6">
-                <div className="space-y-3">
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground">
+              <CardContent className="p-4">
+                <div className="space-y-1">
+                  <h3 className="font-bold">{project.title}</h3>
+                  <p className="text-xs text-muted-foreground flex items-center gap-1">
+                    <Calendar className="w-3 h-3" />
                     {project.duration}
                   </p>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-sm">
                     {project.description}
                   </p>
                 </div>

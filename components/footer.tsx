@@ -1,3 +1,7 @@
+import { Mail } from "lucide-react";
+import Link from "next/link";
+import { Button } from "./ui/button";
+
 export default function Footer() {
   return (
     <footer className="py-8 mt-24">
@@ -10,6 +14,14 @@ export default function Footer() {
               Feel free to reach out if you'd like to collaborate on innovative
               frontend solutions!
             </p>
+            <div className="flex justify-center gap-4">
+              <Button variant="outline" size="sm" asChild>
+                <Link href="mailto:bita.hdt@gmail.com">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Get In Touch
+                </Link>
+              </Button>
+            </div>
           </div>
 
           <div className="pt-6">

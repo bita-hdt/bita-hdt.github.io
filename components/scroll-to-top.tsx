@@ -1,40 +1,42 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ArrowUp } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = (scrollTop / docHeight) * 100
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
 
-      setScrollProgress(progress)
-      setIsVisible(scrollTop > 300)
-    }
+      setScrollProgress(progress);
+      setIsVisible(scrollTop > 300);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    })
-  }
+    });
+  };
 
   // Calculate stroke dash array for progress circle
-  const radius = 20
-  const circumference = 2 * Math.PI * radius
-  const strokeDasharray = circumference
-  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference
+  const radius = 20;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDasharray = circumference;
+  const strokeDashoffset =
+    circumference - (scrollProgress / 100) * circumference;
 
   return (
     <AnimatePresence>
@@ -48,7 +50,10 @@ export default function ScrollToTop() {
         >
           <div className="relative">
             {/* Progress Circle */}
-            <svg className="absolute inset-0 w-11 h-11 md:w-12 md:h-12 transform -rotate-90" viewBox="0 0 44 44">
+            <svg
+              className="absolute inset-0 w-11 h-11 md:w-12 md:h-12 transform -rotate-90"
+              viewBox="0 0 44 44"
+            >
               {/* Background Circle */}
               <circle
                 cx="22"
@@ -80,7 +85,11 @@ export default function ScrollToTop() {
               className="h-11 w-11 md:h-12 md:w-12 rounded-full shadow-lg bg-background hover:bg-muted border-2 border-primary/20 text-foreground group relative"
               aria-label="Scroll to top"
             >
-              <motion.div whileHover={{ y: -1 }} whileTap={{ y: 0 }} transition={{ duration: 0.2 }}>
+              <motion.div
+                whileHover={{ y: -1 }}
+                whileTap={{ y: 0 }}
+                transition={{ duration: 0.2 }}
+              >
                 <ArrowUp className="h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:scale-110" />
               </motion.div>
             </Button>
@@ -88,5 +97,5 @@ export default function ScrollToTop() {
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }

@@ -22,7 +22,7 @@ export default function Introduction() {
         transition={{ duration: 0.5 }}
         className="space-y-6"
       >
-        <div className="space-y-2">
+        <div className="space-y-2 font-mono">
           <h2 className="text-xl font-medium text-muted-foreground">
             Hello, I'm
           </h2>

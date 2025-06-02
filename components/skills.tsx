@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import { Code, Sparkle } from "lucide-react";
 
 const technicalSkills = [
   "React",
@@ -20,6 +21,8 @@ const technicalSkills = [
   "Socket.IO",
   "Expo",
   "PWA",
+  "Vite",
+  "Dynamic Rendering",
   "Git",
   "Turborepo",
   "SCSS",
@@ -30,7 +33,7 @@ const technicalSkills = [
   "MUI",
   "Bootstrap",
   "Reactstrap",
-]
+];
 
 const softSkills = [
   "Problem Solving",
@@ -40,7 +43,7 @@ const softSkills = [
   "Responsibility",
   "Adaptability",
   "Attention to Details",
-]
+];
 
 export default function Skills() {
   return (
@@ -53,7 +56,9 @@ export default function Skills() {
         className="space-y-2 mb-8"
       >
         <h2 className="text-3xl font-bold tracking-tight">Skills</h2>
-        <p className="text-muted-foreground">My technical expertise and personal strengths</p>
+        <p className="text-muted-foreground">
+          My technical expertise and personal strengths
+        </p>
       </motion.div>
 
       <div className="space-y-8">
@@ -64,7 +69,10 @@ export default function Skills() {
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold mb-4">Technical Skills</h3>
+          <h3 className="text-xl font-bold flex items-center gap-2 mb-4">
+            <Code className="h-5 w-5" />
+            Technical Skills
+          </h3>
           <div className="bg-card rounded-lg">
             <div className="flex flex-wrap gap-2">
               {technicalSkills.map((skill, index) => (
@@ -91,7 +99,10 @@ export default function Skills() {
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold mb-4">Soft Skills</h3>
+          <h3 className="text-xl font-bold flex items-center gap-2 mb-4">
+            <Sparkle className="h-5 w-5" />
+            Soft Skills
+          </h3>
           <div className="bg-card rounded-lg">
             <div className="flex flex-wrap gap-2">
               {softSkills.map((skill, index) => (
@@ -112,5 +123,5 @@ export default function Skills() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
