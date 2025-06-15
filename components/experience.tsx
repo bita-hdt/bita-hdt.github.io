@@ -52,7 +52,7 @@ const experiences: ExperienceItem[] = [
     company: "Toparz",
     logo: "/toparz.jpeg",
     period: formatExperiencePeriod("2024-05-20"),
-    location: "Tehran, Iran | Full-time, On-site",
+    location: "Tehran, Iran | Full-time, Hybrid",
     website: "https://toparz.com",
     description: "A cryptocurrency exchange platform",
     items: [
@@ -77,10 +77,10 @@ const experiences: ExperienceItem[] = [
     description:
       "A software company specializing in developing customized solutions based on business requirements, including e-commerce platforms, e-school systems, and automation software.",
     items: [
-      "Developed and maintained 10+ e-commerce websites and dashboards.",
+      "Developed and maintained 10+ e-commerce websites and dashboards. https://mehrganayegh.ir, https://avastyle.ir, etc.",
       "Automated internal business processes for clients by implementing intuitive, user-friendly websites and management panels. https://shahr-darb.com, https://shahrak-elahiyeh.ir, https://aa-co.ir",
       "Designed and implemented dynamic web solutions, aligning with clients' requirements and industry best practices.",
-      "Managed redesigns, updates, and production tasks for 5+ academy and e-commerce websites, ensuring optimal performance. https://mehrganayegh.ir, https://avastyle.ir, etc.",
+      "Managed redesigns, updates, and production tasks for 5+ academy and e-commerce websites, ensuring optimal performance.",
       "Mentored and guided 2 junior developers, supporting their professional growth and onboarding them into projects successfully.",
     ],
   },

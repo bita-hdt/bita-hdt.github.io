@@ -24,6 +24,7 @@ const technicalSkills = [
   "Vite",
   "Dynamic Rendering",
   "Git",
+  "Jest",
   "Turborepo",
   "SCSS",
   "JSS",
