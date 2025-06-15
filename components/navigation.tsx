@@ -108,7 +108,9 @@ export default function Navigation() {
                       onClick={() => scrollToSection(item.href)}
                       className={cn(
                         "rounded-full",
-                        activeSection === item.name.toLowerCase() && "bg-muted"
+                        activeSection === item.name.toLowerCase()
+                          ? "bg-muted"
+                          : "!bg-transparent"
                       )}
                       aria-label={item.name}
                     >
